@@ -39,6 +39,7 @@ Part 2. Testing userid/password combinations
 
 Now we get to the hashing part. You will build an externally chained hash table of userids and passwords. You will process "encrypted.txt" to create the hash table by hashing on userid. At that appropriate location, you will store the unencrypted userid and encrypted password. Recall that an externally chained hash table is pretty easy to implement as simply a collection of linked lists:
 ![Proj1](https://user-images.githubusercontent.com/89366767/187961614-c0afaaad-cbb1-4921-9ff5-368ad18578c5.jpg)
+
 Your program will then automatically test:
 
 5 legal userids and passwords by testing the first 5 entries in "raw.txt." The idea is to hash into the table by userid, find the userid in the table, encrypt the plaintext password, and show that it matches the password on that entry.
