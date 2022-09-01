@@ -1,9 +1,9 @@
 # COP4534-Project-1-Chained-Hash-Table
-Project 1 - Chained Hash Table
+**Project 1 - Chained Hash Table**
 
 The goal of this project is to create an efficient storage and lookup scheme for userids and passwords utilizing an externally chained hash table. Programming will be object-oriented using C++. The assignment has two parts.
 
-Part 1, Creating encrypted passwords.
+**Part 1, Creating encrypted passwords.**
 
 We will use the names in "lastNames.txt," located with this project description, as userids. You will only need the data in the first column of the file. You will first generate random passwords for each userid and write them with the corresponding userid to a raw file, one userid, password combination per line. This file should be named "raw.txt." Note that we DO NOT want sequential passwords such as a1, a2, a3, a4, etc. Passwords should be 9 characters, comprised of random combinations of lower-case letters (admittedly crummy, but simpler for our purposes). Userids are unique, passwords do NOT need to be unique.
 
@@ -17,7 +17,7 @@ Use jones as the key:
 
 You would then encode data :  moge
 
-Part 2. Testing userid/password combinations
+**Part 2. Testing userid/password combinations**
 
 Now we get to the hashing part. You will build an externally chained hash table of userids and passwords. You will process "encrypted.txt" to create the hash table by hashing on userid. At that appropriate location, you will store the unencrypted userid and encrypted password. Recall that an externally chained hash table is pretty easy to implement as simply a collection of linked lists:
 ![Proj1](https://user-images.githubusercontent.com/89366767/187961614-c0afaaad-cbb1-4921-9ff5-368ad18578c5.jpg)
