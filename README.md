@@ -13,25 +13,36 @@ The Vigenere Cipher is a simple cypher that solves the problem of using frequenc
 
 Use jones as the key:
 
-a b c d e f g h i j k l m n o p q r s t u v w x y z\n
-| | | | | | | | | | | | | | | | | | | | | | | | | |\n
-j k l m n o p q r s t u v w x y z a b c d e f g h i\n
-
 a b c d e f g h i j k l m n o p q r s t u v w x y z
+
 | | | | | | | | | | | | | | | | | | | | | | | | | |
+
+j k l m n o p q r s t u v w x y z a b c d e f g h i
+------
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+| | | | | | | | | | | | | | | | | | | | | | | | | |
+
 o p q r s t u v w x y z a b c d e f g h i j k l m n
-
+------
 a b c d e f g h i j k l m n o p q r s t u v w x y z
+
 | | | | | | | | | | | | | | | | | | | | | | | | | |
+
 n o p q r s t u v w x y z a b c d e f g h i j k l m
-
+-----
 a b c d e f g h i j k l m n o p q r s t u v w x y z
+
 | | | | | | | | | | | | | | | | | | | | | | | | | |
+
 e f g h i j k l m n o p q r s t u v w x y z  a b c d 
-
+-----
 a b c d e f g h i j k l m n o p q r s t u v w x y z
+
 | | | | | | | | | | | | | | | | | | | | | | | | | |
+
 s t u v w x y z  a b c d e f g h i j k l m n o p q r
+-----
 
 You would then encode data :  moge
 
