@@ -50,17 +50,29 @@ Output:
 As described in class, print to the console indicate the five legal and illegal userid and password combinations you tried and print them to the console. The "Password" column indicates the plaintext password from raw.txt. "Attempted" indicates the plaintext password you used.
 
 Legal:
-Userid      Password   Attempted  Result
-SMITH       asdfvfrty  asdfvfrty  match
-JOHNSON     okmnjuygt  okmnjuygt  match
-WILLIAMS    yhnbgtrde  yhnbgtrde  match
-JONES       wsxzaqwer  wsxzaqwer  match
-BROWN       bhvfgtyui  bhvfgtyui  match
+
+Userid    Password  Attempted Result
+
+SMITH     asdfvfrty asdfvfrty match
+
+JOHNSON   okmnjuygt okmnjuygt match
+
+WILLIAMS  yhnbgtrde yhnbgtrde match
+
+JONES     wsxzaqwer wsxzaqwer match
+
+BROWN     bhvfgtyui bhvfgtyui match
 
 Illegal:
+
 Userid      Password   Attempted  Result
+
 SMITH       asdfvfrty  xsdfvfrty  no match
+
 JOHNSON     okmnjuygt  xkmnjuygt  no match
+
 WILLIAMS    yhnbgtrde  xhnbgtrde  no match
+
 JONES       wsxzaqwer  xsxzaqwer  no match
+
 BROWN       bhvfgtyui  xhvfgtyui  no match
