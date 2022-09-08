@@ -1,6 +1,16 @@
 #ifndef CRYPTOGRAPHER_HPP
 #define CRYPTOGRAPHER_HPP
 
+ /***************************************************************
+ *   Student Name: Wilver Santos
+ *   File Name: Cryptographer.hpp
+ *   Assignment number: Project 1
+ *
+ *   Other comments regarding the file - Cryptographer.hpp defines the variables and methods
+ *   used for encryption and decryption by the Vigenere Cipher.
+ *         
+ ***************************************************************/
+
 #include<string>
 
 using std::string;
@@ -9,7 +19,8 @@ class Cryptographer
 {
 	private:
 	string key;
-	const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	int keySize;
+	string alphabet;
 	
 	public:
 	Cryptographer(string key);
