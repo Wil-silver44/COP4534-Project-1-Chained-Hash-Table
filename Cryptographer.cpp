@@ -3,7 +3,7 @@
  *   File Name: Cryptographer.cpp
  *   Assignment number: Project 1
  *
- *   Other comments regarding the file - intializes and builds the methods 
+ *   Other comments regarding the file - implements defined methods and variables 
  *   for the cryptographer class.
  ***************************************************************/
 

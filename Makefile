@@ -13,6 +13,11 @@ main: main.o $(OBJECTS)
 cryptoTest: cryptoTester.cpp Cryptographer.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
+nodeTest: nodeTest.cpp Node.o
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+
+
 clean:
 	rm -rf *.dSYM
-		$(RM) *.o *.gc* cryptoTest 
+		$(RM) *.o *.gc* cryptoTest nodeTest 
