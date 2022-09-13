@@ -16,9 +16,9 @@ cryptoTest: Tests/cryptoTester.cpp Cryptographer.o
 nodeTest: Tests/nodeTest.cpp Node.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-tableTest: HashTable.o
+hashTest: Tests/hashTest.cpp HashTable.o Node.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:
 	rm -rf *.dSYM
-		$(RM) *.o *.gc* cryptoTest nodeTest 
+		$(RM) *.o *.gc* cryptoTest nodeTest hashTest 
