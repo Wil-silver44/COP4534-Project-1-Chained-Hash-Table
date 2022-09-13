@@ -10,13 +10,14 @@ OBJECTS = Cryptographer.o Node.o UserListGen.o HashTable.o
 main: main.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-cryptoTest: cryptoTester.cpp Cryptographer.o
+cryptoTest: Tests/cryptoTester.cpp Cryptographer.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-nodeTest: nodeTest.cpp Node.o
+nodeTest: Tests/nodeTest.cpp Node.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-
+tableTest: HashTable.o
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:
 	rm -rf *.dSYM
