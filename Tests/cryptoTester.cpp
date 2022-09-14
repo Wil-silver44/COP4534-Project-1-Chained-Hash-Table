@@ -16,9 +16,11 @@ int main()
 	string encryptedWord;
 
 	encryptedWord = testCrypter.Encrypt(rawWord);
-
+	
+	cout << rawWord << " --> " << encryptedWord << endl;
+	
 	if(encryptedWord == "moge")
-	{ cout << "TEST PASSED." << endl << endl;  }
+	{ cout << " TEST PASSED." << endl << endl;  }
 	else
 	{ cout << "TEST FAILED\nPRINTING OUTPUT: " << encryptedWord << endl << endl; }
 
@@ -27,9 +29,9 @@ int main()
 	string decryptedWord;
 
 	decryptedWord = testCrypter.Decrypt(encryptedWord);
-
+	cout << encryptedWord << " --> " << decryptedWord << endl;
 	if(decryptedWord == "data")
-	{ cout << "TEST PASSED." << endl << endl; }
+	{ cout << " TEST PASSED." << endl << endl; }
 	else
 	{ cout << "TEST FAILED\nPRINTING OUTPUT: " << decryptedWord << endl << endl; }
 

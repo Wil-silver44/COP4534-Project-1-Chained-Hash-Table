@@ -15,15 +15,20 @@
  ***************************************************************/
 
 #include <fstream>
+#include <random>
+#include <iostream>
 #include "Cryptographer.hpp"
 
-using std::fstream;
+using std::ifstream;
+using std::ofstream;
 
 class UserListGen
 {
 	private:
-	fstream fileHandler;
+	ifstream fileReader;
+	ofstream fileWriter;
 	Cryptographer* dataCryptographer;
+	string RandPasswordGen();
 
 	public:
 	UserListGen(string nameDataFile);

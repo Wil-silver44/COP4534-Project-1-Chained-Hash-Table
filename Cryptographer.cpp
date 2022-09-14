@@ -8,9 +8,6 @@
  ***************************************************************/
 
 #include "Cryptographer.hpp"
-#include<iostream>
-using std::cout;
-using std::endl;
 
 Cryptographer::Cryptographer(string key)
 {
@@ -22,31 +19,36 @@ Cryptographer::Cryptographer(string key)
 string Cryptographer::Encrypt(string rawData)
 {
 	int rawDatSize = rawData.size();
-	int charCounter = 0;
 	string encryptedDat;
-	string cypherAlphabet; 
-	int alphaIter; 
-	char keyVal;
-	
-		
-	for(int keyIter = 0; charCounter < rawDatSize; ++keyIter)
-	{	
-		keyVal = this->key.at(keyIter);
-		cypherAlphabet.clear();
-		
-		for(alphaIter = alphabet.find(keyVal); cypherAlphabet.size() != 26; ++alphaIter)
-		{
-			cypherAlphabet += this->alphabet.at(alphaIter);
-		
-			if(alphaIter == 25)
-			{ alphaIter = -1; }
-		}
-		cout << cypherAlphabet << " FOR KEY LETTER " << keyVal << endl << endl;
+	char charHolder;
 
-		encryptedDat += cypherAlphabet.at( this->alphabet.find( rawData.at(charCounter) ) );
-		++charCounter;		
-		if(keyIter == --keySize && cypherAlphabet.size() != 26)
-		{ keyIter = 0; }
+	if(this->keySize >= rawDatSize)
+	{
+       		for(int i = 0; i < rawDatSize; ++i)
+		{
+			charHolder = rawData.at(i) + (this->key.at(i) - 'a');
+			if(charHolder > 122)
+			{
+				charHolder =- 26;
+			}
+			
+			encryptedDat += charHolder;
+		}
+
+
+	}
+	
+	else if(this->keySize < rawDatSize)
+	{
+		for(int i = 0; i < rawDatSize; ++i)
+		{
+			charHolder = rawData.at(i) + (this->key.at(i) - 'a');
+			if(charHolder > 122)
+			{
+
+			}
+			encryptedDat += charHolder;
+		}
 	}
 	
 	return encryptedDat;
@@ -54,30 +56,23 @@ string Cryptographer::Encrypt(string rawData)
 
 string Cryptographer::Decrypt(string encryptedData)
 {
-	int encryptDataSize = encryptedData.size();
-	int charCounter = 0;
+	int encryptedDatSize = encryptedData.size();
 	string decryptedDat;
-	string cypherAlphabet;
-	int alphaIter;
-	char keyVal;
 	
-	for(int keyIter = 0; charCounter < encryptDataSize; ++keyIter)
+	if(this->keySize >= encryptedDatSize)
 	{
-		keyVal = this->key.at(keyIter);
-		cypherAlphabet.clear();
-		for(alphaIter = alphabet.find(keyVal); cypherAlphabet.size() != 26; ++alphaIter)
+		for(int i = 0; i < encryptedDatSize; ++i)
 		{
-			cypherAlphabet += this->alphabet.at(alphaIter);
-
-			if(alphaIter == 25)
-			{ alphaIter = -1; }
+			 decryptedDat += encryptedData.at(i) - (this->key.at(i) - 'a');
 		}
-		cout << cypherAlphabet << " FOR KEY LETTER " << keyVal << endl << endl;
+	}
 
-		decryptedDat += this->alphabet.at(cypherAlphabet.find( encryptedData.at(charCounter) ) );
-		++charCounter;
-		if(keyIter == --keySize && cypherAlphabet.size() != 26)
-		{ keyIter = 0; }
+	else if(this->keySize < encryptedDatSize)
+	{
+		for(int i = 0; i < encryptedDatSize; ++i)
+		{
+			decryptedDat += encryptedData.at(i) - (this->key.at(i % this->keySize) - 'a');
+		}
 	}
 
 	return decryptedDat;

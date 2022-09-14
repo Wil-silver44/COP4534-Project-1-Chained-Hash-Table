@@ -19,6 +19,9 @@ nodeTest: Tests/nodeTest.cpp Node.o
 hashTest: Tests/hashTest.cpp HashTable.o Node.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
+userGenTest: Tests/userGenTest.cpp UserListGen.o Cryptographer.o
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
 clean:
 	rm -rf *.dSYM
-		$(RM) *.o *.gc* cryptoTest nodeTest hashTest 
+		$(RM) *.o *.gc* cryptoTest nodeTest hashTest userGenTest /home/wds11/COP4534/COP4534-Project-1-Chained-Hash-Table/raw.txt 
