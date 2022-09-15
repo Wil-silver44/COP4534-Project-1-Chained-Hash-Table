@@ -24,11 +24,12 @@ HashTable::HashTable(int numBuckets)
 
 HashTable::~HashTable()
 {
+	Node* nodeGrabber = nullptr;
 	for(int i = 0; i < this->numBuckets; ++i)
 	{
 		while(this->headerBucketList[i] != nullptr)
 		{
-			Node* nodeGrabber = this->headerBucketList[i];
+			nodeGrabber = this->headerBucketList[i];
 			if(nodeGrabber->GetNext() == nullptr)
 			{
 				delete nodeGrabber;

@@ -11,7 +11,7 @@
 
 UserListGen::UserListGen(string nameDataFile)
 {
-	this->dataCryptographer = new Cryptographer("davis");
+	this->dataCryptographer = new Cryptographer("brodhead");
 	
 	this->fileReader.open(nameDataFile);
 	int delim;
@@ -21,14 +21,20 @@ UserListGen::UserListGen(string nameDataFile)
 		this->fileWriter.open("/home/wds11/COP4534/COP4534-Project-1-Chained-Hash-Table/raw.txt");
 		if(this->fileWriter.is_open())
 		{
-			for(int i = 0; i < 5; ++i)
+			while(this->fileReader.good())
 			{
 				std::getline(this->fileReader, nameHolder);
-				delim = nameHolder.find_first_of(' ');
-				nameHolder = nameHolder.substr(0, delim);
+				if(this->fileReader.eof())
+				{ break; }
+				
+				else
+				{
+					delim = nameHolder.find_first_of(' ');
+					nameHolder = nameHolder.substr(0, delim);
 
-				nameHolder += "," + RandPasswordGen();
-				this->fileWriter << nameHolder << "\n"; 
+					nameHolder += "," + RandPasswordGen();
+					this->fileWriter << nameHolder << "\n";
+				}	
 			}
 
 		fileWriter.close();
@@ -61,13 +67,19 @@ void UserListGen::GenerateEncryptedList()
 			string passHolder;
 			int delim;
 
-			for(int i = 0; i < 5; ++i)
+			while(this->fileReader.good())
 			{
 				std::getline(this->fileReader, userHolder);
-				delim = userHolder.find_first_of(',');
-				passHolder = userHolder.substr(delim + 1 , userHolder.size() - 1);
-				this->fileWriter << userHolder.substr(0,delim) << ',' 
-				<< this->dataCryptographer->Encrypt(passHolder) << std::endl;
+				if(this->fileReader.eof())
+				{ break; }
+				
+				else
+				{
+					delim = userHolder.find_first_of(',');
+					passHolder = userHolder.substr(delim + 1, userHolder.size() - 1);
+					this->fileWriter << userHolder.substr(0,delim) << ',' 
+					<< this->dataCryptographer->Encrypt(passHolder) << std::endl;
+				}
 
 			}
 

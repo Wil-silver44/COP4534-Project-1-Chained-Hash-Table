@@ -7,21 +7,9 @@ CXXFLAGS = -std=c++14 -g -Wall
 
 OBJECTS = Cryptographer.o Node.o UserListGen.o HashTable.o
 
-main: main.o $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
-cryptoTest: Tests/cryptoTester.cpp Cryptographer.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
-nodeTest: Tests/nodeTest.cpp Node.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
-hashTest: Tests/hashTest.cpp HashTable.o Node.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
-userGenTest: Tests/userGenTest.cpp UserListGen.o Cryptographer.o
+mainTest: mainTest.cpp $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:
 	rm -rf *.dSYM
-		$(RM) *.o *.gc* cryptoTest nodeTest hashTest userGenTest /home/wds11/COP4534/COP4534-Project-1-Chained-Hash-Table/raw.txt 
+		$(RM) *.o *.gc* mainTest raw.txt encrypted.txt
