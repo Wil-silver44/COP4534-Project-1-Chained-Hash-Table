@@ -7,7 +7,6 @@
  *      defined in UserListGen.hpp.
  *
  ***************************************************************/
-
 #include "UserListGen.hpp"
 
 UserListGen::UserListGen(string nameDataFile)
@@ -61,25 +60,16 @@ void UserListGen::GenerateEncryptedList()
 			string userHolder;
 			string passHolder;
 			int delim;
-			std::cout << "encryption test" << std::endl;
-			std::getline(this->fileReader, userHolder);
-			delim = userHolder.find_first_of(',');
-			std::cout << "line info: " << userHolder << std::endl;
-			std::cout << "comma is at index: " << delim << std::endl;
-			std::cout << "last letter is at index: " << (userHolder.size() - 1) << std::endl;
-			std::cout << "password is: " << userHolder.substr(delim + 1 , userHolder.size() - 1) << std::endl;
-			std::cout << "attempting to encrypt: " << this->dataCryptographer->Encrypt(userHolder.substr(delim + 1 , userHolder.size() - 1)) << std::endl;
 
-			
-			
-			/*for(int i = 0; i < 5; ++i)
+			for(int i = 0; i < 5; ++i)
 			{
 				std::getline(this->fileReader, userHolder);
 				delim = userHolder.find_first_of(',');
 				passHolder = userHolder.substr(delim + 1 , userHolder.size() - 1);
-				this->fileWriter << userHolder.substr(0,delim) << ',' << this->dataCryptographer->Encrypt(passHolder) << std::endl;
+				this->fileWriter << userHolder.substr(0,delim) << ',' 
+				<< this->dataCryptographer->Encrypt(passHolder) << std::endl;
 
-			} */
+			}
 
 			this->fileWriter.close();
 		}
@@ -95,6 +85,8 @@ void UserListGen::GenerateEncryptedList()
 		std::cout << "ERROR: FAILED TO OPEN FILE: 'raw.txt'" << std::endl;
 		this->fileReader.close();
 	 }
+
+	 delete this->dataCryptographer;
 }
 
 string UserListGen::RandPasswordGen()

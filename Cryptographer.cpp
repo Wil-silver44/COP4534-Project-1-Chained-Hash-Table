@@ -6,7 +6,6 @@
  *   Other comments regarding the file - implements defined methods and variables 
  *   for the cryptographer class.
  ***************************************************************/
-
 #include "Cryptographer.hpp"
 
 Cryptographer::Cryptographer(string key)
@@ -20,7 +19,7 @@ string Cryptographer::Encrypt(string rawData)
 {
 	int rawDatSize = rawData.size();
 	string encryptedDat;
-	char charHolder;
+	int charHolder;
 
 	if(this->keySize >= rawDatSize)
 	{
@@ -29,9 +28,8 @@ string Cryptographer::Encrypt(string rawData)
 			charHolder = rawData.at(i) + (this->key.at(i) - 'a');
 			if(charHolder > 122)
 			{
-				charHolder =- 26;
+				charHolder -= 26;
 			}
-			
 			encryptedDat += charHolder;
 		}
 
@@ -42,10 +40,10 @@ string Cryptographer::Encrypt(string rawData)
 	{
 		for(int i = 0; i < rawDatSize; ++i)
 		{
-			charHolder = rawData.at(i) + (this->key.at(i) - 'a');
+			charHolder = rawData.at(i) + (this->key.at(i % keySize) - 'a');
 			if(charHolder > 122)
 			{
-
+				charHolder -= 26;
 			}
 			encryptedDat += charHolder;
 		}
@@ -58,12 +56,18 @@ string Cryptographer::Decrypt(string encryptedData)
 {
 	int encryptedDatSize = encryptedData.size();
 	string decryptedDat;
+	int charHolder;
 	
 	if(this->keySize >= encryptedDatSize)
 	{
 		for(int i = 0; i < encryptedDatSize; ++i)
 		{
-			 decryptedDat += encryptedData.at(i) - (this->key.at(i) - 'a');
+			charHolder = encryptedData.at(i) - (this->key.at(i) - 'a');
+			if(charHolder < 97)
+			{
+				charHolder += 26;
+			}
+			decryptedDat += charHolder;
 		}
 	}
 
@@ -71,7 +75,12 @@ string Cryptographer::Decrypt(string encryptedData)
 	{
 		for(int i = 0; i < encryptedDatSize; ++i)
 		{
-			decryptedDat += encryptedData.at(i) - (this->key.at(i % this->keySize) - 'a');
+			charHolder = encryptedData.at(i) - (this->key.at(i % this->keySize) - 'a');
+			if(charHolder < 97)
+			{
+                                charHolder += 26;
+			}
+			decryptedDat += charHolder;
 		}
 	}
 

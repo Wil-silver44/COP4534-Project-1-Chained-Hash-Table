@@ -37,6 +37,22 @@ int main()
 	cout << "Generating encrypted list" << endl;
 	testList.GenerateEncryptedList();
 
+	testStream.open("/home/wds11/COP4534/COP4534-Project-1-Chained-Hash-Table/encrypted.txt");
+        if(testStream.is_open())
+	{
+		string fileData;
+		while(!testStream.eof())
+		{
+			getline(testStream,fileData);
+			cout << fileData << endl;
+		}
+	}
+	else
+	{
+                cout << "ERROR: 'encrypted.txt' NOT OPENED" << endl << endl;
+		testStream.close();
+	}
+
 	cout << "Operation complete." << endl;
 	return 0;
 }
