@@ -11,7 +11,7 @@
 
 UserListGen::UserListGen(string nameDataFile)
 {
-	this->dataCryptographer = new Cryptographer("brodhead");
+	this->dataCryptographer = new Cryptographer("jones");
 	
 	this->fileReader.open(nameDataFile);
 	int delim;
@@ -55,12 +55,13 @@ UserListGen::UserListGen(string nameDataFile)
 	
 }
 
+//takes raw file and generates encrypted file from it.
 void UserListGen::GenerateEncryptedList()
 {
-	 this->fileReader.open("/home/wds11/COP4534/COP4534-Project-1-Chained-Hash-Table/raw.txt");
+	 this->fileReader.open("raw.txt");
 	 if(this->fileReader.is_open())
 	 {
-		this->fileWriter.open("/home/wds11/COP4534/COP4534-Project-1-Chained-Hash-Table/encrypted.txt");
+		this->fileWriter.open("encrypted.txt");
 		if(this->fileWriter.is_open())
 		{
 			string userHolder;

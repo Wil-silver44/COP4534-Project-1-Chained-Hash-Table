@@ -12,6 +12,13 @@ mainTest: mainTest.cpp $(OBJECTS)
 
 hashTest: Tests/hashTest.cpp HashTable.o Node.o
 		$(CXX) $(CXXFLAGS) -o $@ $^
+
+cryptoTest: Tests/cryptoTester.cpp Cryptographer.o
+	 $(CXX) $(CXXFLAGS) -o $@ $^
+
+userGenTest: Tests/userGenTest.cpp UserListGen.o Cryptographer.o
+	 $(CXX) $(CXXFLAGS) -o $@ $^
+
 clean:
 	rm -rf *.dSYM
-		$(RM) *.o *.gc* mainTest raw.txt encrypted.txt hashTest
+		$(RM) *.o *.gc* mainTest raw.txt encrypted.txt hashTest userGenTest cryptoTest
