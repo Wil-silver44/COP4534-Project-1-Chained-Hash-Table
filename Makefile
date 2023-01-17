@@ -10,6 +10,8 @@ OBJECTS = Cryptographer.o Node.o UserListGen.o HashTable.o
 mainTest: mainTest.cpp $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
+hashTest: Tests/hashTest.cpp HashTable.o Node.o
+		$(CXX) $(CXXFLAGS) -o $@ $^
 clean:
 	rm -rf *.dSYM
-		$(RM) *.o *.gc* mainTest raw.txt encrypted.txt
+		$(RM) *.o *.gc* mainTest raw.txt encrypted.txt hashTest

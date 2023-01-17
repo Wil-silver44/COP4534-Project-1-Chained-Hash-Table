@@ -10,51 +10,54 @@
  *
  ***************************************************************/
 
-HashTable::HashTable(int numBuckets)
+HashTable::HashTable()
 {
-	this->numBuckets = numBuckets;
-	//pointer to array of node pointers.
-	this->headerBucketList = new Node*[numBuckets];
-
-	//makes every pointer null to begin
-	for(int i = 0; i < this->numBuckets; ++i)
+	for(int i = 0; i < NUM_BUCKETS; ++i)
 	{
-		this->headerBucketList[i] = nullptr;
+		headerBucketList[i] = nullptr;	
 	}
 }
 
 HashTable::~HashTable()
 {
-	//helper node
-	Node* nodeGrabber = nullptr;
 
-	//DELETE LATER: loop through every bucket
-	for(int i = 0; i < this->numBuckets; ++i)
+	Node* helperNode = nullptr;
+
+	for(int i = 0; i < NUM_BUCKETS; ++i)
 	{
-		//DELETE LATER: while the current bucket is not null
-		while(this->headerBucketList[i] != nullptr)
+		//if something is in the bucket
+		if(headerBucketList[i] != nullptr)
 		{
-			//DELETE LATER: sets helper node to the current bucket header
-			nodeGrabber = this->headerBucketList[i];
-			//DELETE LATER: if the current node has no next node, delete it.
-			if(nodeGrabber->GetNext() == nullptr)
+			//if there is another node in the linked list stored in the bucket
+			if(headerBucketList[i]->GetNext() != nullptr)
 			{
-				delete nodeGrabber;
+				//until the bucket is empty, loop
+				while(headerBucketList[i] != nullptr)
+				{
+					helperNode = headerBucketList[i];
+
+					if(helperNode->GetNext() != nullptr)
+					{
+						helperNode = helperNode->GetNext();
+					}
+					else
+					{
+						delete helperNode;
+					}
+				}
 			}
-			//DELETE LATER: otherwise, move the helper to the next node, and repeat the check until the header is all that remains.
 			else
 			{
-				nodeGrabber = nodeGrabber->GetNext();
+				delete headerBucketList[i];
 			}
+			
 		}
 	}
-	
-	delete this->headerBucketList;
 }
 
 int HashTable::HashFunction(string userKey)
 {
-	return (NameToNum(userKey) % this->numBuckets);
+	return (NameToNum(userKey) % NUM_BUCKETS);
 }
 
 void HashTable::InsertItem(string userId, string password)
@@ -62,7 +65,7 @@ void HashTable::InsertItem(string userId, string password)
 	int whatBucket = HashFunction(userId);
 	Node* tableTraveler = nullptr;
 
-	if(this->headerBucketList[whatBucket] != nullptr)
+	if(headerBucketList[whatBucket] != nullptr)
 	{
 		tableTraveler = headerBucketList[whatBucket];
 		
@@ -76,7 +79,7 @@ void HashTable::InsertItem(string userId, string password)
 	
 	else
 	{
-		this->headerBucketList[whatBucket] = new Node(userId, password);
+		headerBucketList[whatBucket] = new Node(userId, password);
 	}
 }
 
@@ -86,7 +89,7 @@ Node* HashTable::FindItem(string userId)
 	bool nameFound = false;
 	int whatBucket = HashFunction(userId);
 	
-	itemHolder = this->headerBucketList[whatBucket];
+	itemHolder = headerBucketList[whatBucket];
 
 	while(!nameFound)
 	{

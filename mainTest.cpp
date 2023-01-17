@@ -24,7 +24,7 @@ void tableComparisonOutput(string someRawfile, HashTable SomeTable);
 
 int main()
 {
-	HashTable testTable(7);
+	HashTable testTable;
 	UserListGen userTestList("lastNames.txt");
 	userTestList.GenerateEncryptedList();
 	

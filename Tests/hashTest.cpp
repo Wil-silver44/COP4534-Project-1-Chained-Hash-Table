@@ -9,7 +9,7 @@ using std::string;
 int main()
 {
 	cout << "Creating Table with 4 buckets." << endl;
-	HashTable testTable(4);
+	HashTable testTable;
 
 	cout << endl << "Table created!" << endl << endl;
 
@@ -42,8 +42,6 @@ int main()
 	{
 		cout << "FAILED TO FIND NODE." << endl << endl;
 	}
-	
-	delete resultHolder;
 
 	cout << "Operation complete : END TEST." << endl;
 

@@ -12,15 +12,16 @@
  ***************************************************************/
 #include "Node.hpp"
 
+static const int NUM_BUCKETS = 6;
+
 class HashTable
 {
 	private:
-	int numBuckets;
-	Node** headerBucketList;
+	Node* headerBucketList[NUM_BUCKETS];
 	int NameToNum(string someString);
 	
 	public:
-	HashTable(int someNumBuckets);
+	HashTable();
 	~HashTable();
 	int HashFunction(string userKey);
 	void InsertItem(string userID, string userPassword);
