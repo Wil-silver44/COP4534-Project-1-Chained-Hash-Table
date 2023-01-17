@@ -20,7 +20,7 @@ class Cryptographer
 	private:
 	string key;
 	int keySize;
-	string alphabet;
+	const string ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 	
 	public:
 	Cryptographer(string key);

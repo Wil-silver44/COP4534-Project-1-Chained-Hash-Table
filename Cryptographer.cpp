@@ -12,7 +12,6 @@ Cryptographer::Cryptographer(string key)
 {
 	this-> key = key;
 	this-> keySize = key.size();
-	this->alphabet = "abcdefghijklmnopqrstuvwxyz";
 }
 
 string Cryptographer::Encrypt(string rawData)
