@@ -5,9 +5,9 @@ CXX = g++
  #  -Wall turns on most, but not all, compiler warnings
 CXXFLAGS = -std=c++14 -g -Wall
 
-OBJECTS = Cryptographer.o Node.o UserListGen.o HashTable.o
+OBJECTS = Cryptographer.o Node.o UserListGen.o HashTable.o UserBaseSim.o
 
-mainTest: mainTest.cpp $(OBJECTS)
+main: main.cpp $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 hashTest: Tests/hashTest.cpp HashTable.o Node.o
@@ -21,4 +21,4 @@ userGenTest: Tests/userGenTest.cpp UserListGen.o Cryptographer.o
 
 clean:
 	rm -rf *.dSYM
-		$(RM) *.o *.gc* mainTest raw.txt encrypted.txt hashTest userGenTest cryptoTest
+		$(RM) *.o *.gc* mainTest raw.txt encrypted.txt hashTest userGenTest cryptoTest main
