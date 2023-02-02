@@ -28,6 +28,7 @@ class UserListGen
 	ifstream fileReader;
 	ofstream fileWriter;
 	Cryptographer* dataCryptographer;
+	const string CIPHER_KEY = "jones";
 	string RandPasswordGen();
 
 	public:

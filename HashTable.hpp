@@ -12,7 +12,7 @@
  ***************************************************************/
 #include "Node.hpp"
 
-const int NUM_BUCKETS = 17;
+const int NUM_BUCKETS = 23;
 
 class HashTable
 {

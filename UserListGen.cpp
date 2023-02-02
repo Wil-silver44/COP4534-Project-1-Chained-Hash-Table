@@ -11,20 +11,20 @@
 
 UserListGen::UserListGen(string nameDataFile)
 {
-	this->dataCryptographer = new Cryptographer("jones");
+	dataCryptographer = new Cryptographer(CIPHER_KEY);
 	
-	this->fileReader.open(nameDataFile);
+	fileReader.open(nameDataFile);
 	int delim;
-	if(this->fileReader.is_open())
+	if(fileReader.is_open())
 	{
 		string nameHolder;
-		this->fileWriter.open("/home/wds11/COP4534/COP4534-Project-1-Chained-Hash-Table/raw.txt");
-		if(this->fileWriter.is_open())
+		fileWriter.open("raw.txt");
+		if(fileWriter.is_open())
 		{
-			while(this->fileReader.good())
+			while(fileReader.good())
 			{
-				std::getline(this->fileReader, nameHolder);
-				if(this->fileReader.eof())
+				std::getline(fileReader, nameHolder);
+				if(fileReader.eof())
 				{ break; }
 				
 				else
@@ -42,15 +42,15 @@ UserListGen::UserListGen(string nameDataFile)
 		else
 		{ 
 			std::cout << "ERROR: FAILED TO OPEN FILE: 'raw.txt'" << std::endl;
-			this->fileWriter.close();
+			fileWriter.close();
 		}
 
-		this->fileReader.close();
+		fileReader.close();
 	}
 	else
 	{
 		std::cout << "ERROR: FAILED TO OPEN FILE: 'lastNames.txt'" << std::endl;
-		this->fileReader.close();
+		fileReader.close();
 	}
 	
 }
@@ -58,48 +58,48 @@ UserListGen::UserListGen(string nameDataFile)
 //takes raw file and generates encrypted file from it.
 void UserListGen::GenerateEncryptedList()
 {
-	 this->fileReader.open("raw.txt");
-	 if(this->fileReader.is_open())
+	 fileReader.open("raw.txt");
+	 if(fileReader.is_open())
 	 {
 		this->fileWriter.open("encrypted.txt");
-		if(this->fileWriter.is_open())
+		if(fileWriter.is_open())
 		{
 			string userHolder;
 			string passHolder;
 			int delim;
 
-			while(this->fileReader.good())
+			while(fileReader.good())
 			{
-				std::getline(this->fileReader, userHolder);
-				if(this->fileReader.eof())
+				std::getline(fileReader, userHolder);
+				if(fileReader.eof())
 				{ break; }
 				
 				else
 				{
 					delim = userHolder.find_first_of(',');
 					passHolder = userHolder.substr(delim + 1, userHolder.size() - 1);
-					this->fileWriter << userHolder.substr(0,delim) << ',' 
-					<< this->dataCryptographer->Encrypt(passHolder) << std::endl;
+					fileWriter << userHolder.substr(0,delim) << ',' 
+					<< dataCryptographer->Encrypt(passHolder) << std::endl;
 				}
 
 			}
 
-			this->fileWriter.close();
+			fileWriter.close();
 		}
 		else
 		{
 			std::cout << "ERROR: FAILED TO OPEN FILE: 'encrypted.txt'" << std::endl;
-			this->fileWriter.close();
+			fileWriter.close();
 		}
-		this->fileReader.close();
+		fileReader.close();
 	 }
 	 else
 	 {
 		std::cout << "ERROR: FAILED TO OPEN FILE: 'raw.txt'" << std::endl;
-		this->fileReader.close();
+		fileReader.close();
 	 }
 
-	 delete this->dataCryptographer;
+	 delete dataCryptographer;
 }
 
 string UserListGen::RandPasswordGen()

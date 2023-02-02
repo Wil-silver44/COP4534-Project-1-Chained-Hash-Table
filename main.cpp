@@ -11,10 +11,13 @@ int main()
 
 	cout << "Class instance created." << endl;
 
+	cout << "Populating database with sample users..." << endl << endl;
 
+	TestSim.PopulateDB();
 
-
+	TestSim.CheckDB();
 
 	cout << "Operations complete" << endl;
+	
 	return 0;
 }
