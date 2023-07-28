@@ -5,7 +5,7 @@ The goal of this project is to create an efficient storage and lookup scheme for
 
 **Part 1, Creating encrypted passwords.**
 
-We will use the names in "lastNames.txt," located with this project description, as userids. You will only need the data in the first column of the file. You will first generate random passwords for each userid and write them with the corresponding userid to a raw file, one userid, password combination per line. This file should be named "raw.txt." Note that we DO NOT want sequential passwords such as a1, a2, a3, a4, etc. Passwords should be 9 characters, comprised of random combinations of lower-case letters (admittedly crummy, but simpler for our purposes). Userids are unique, passwords do NOT need to be unique.
+We will use the names in "lastNames.txt," located in this repository. You will only need the data in the first column of the file. You will first generate random passwords for each userid and write them with the corresponding userid to a raw file, one userid, password combination per line. This file should be named "raw.txt." Note that we DO NOT want sequential passwords such as a1, a2, a3, a4, etc. Passwords should be 9 characters, comprised of random combinations of lower-case letters (admittedly crummy, but simpler for our purposes). Userids are unique, passwords do NOT need to be unique.
 
 Next, you will read the unencrypted file, encrypt the passwords, and write this file back to a disk file named "encrypted.txt." We will use the Vigenere Cipher to create encrypted passwords:
 
@@ -58,59 +58,3 @@ WILLIAMS    yhnbgtrde  xhnbgtrde  no match
 JONES       wsxzaqwer  xsxzaqwer  no match
 
 BROWN       bhvfgtyui  xhvfgtyui  no match
-
-About the use of GitHub:
-
-I STRONGLY suggest that you create GitHub repos for the projects in this course and that you routinely pull the current version of your project and push updates. You should do this because:
-
-1. You will use configuration management tools of some sort from the first day you are working in the world.
-2. If any copying of assignments is detected, we can trace your record of commits to decide who copied from whom.
-
-I suggest that you employ a test-driven development approach because:
-
-1. You are likely to encounter a development culture in which it is encouraged or required.
-2. It will force you to do incremental development and always have a running program.
-
-I will not produce test cases to which you might code because
-
-1. that will be your responsibility in the real world
-2. test cases imply a detailed design of the project. At this level, you must be able to produce your own designs.
-
-Deliverables
-
-1) Makefile
-2) User's manual
-3) UML diagram
-4) C++ Source Code (.hpp and .cpp)
-5) lastNames.txt
-
-Submission
-
-Your project must be submitted using the instructions below to be graded.
-
-1. Compile and run your program one last time before submitting it. Your program must run in Linux in the multiplatform lab. 
-
-2. Place all deliverables in a single folder that is named with your last name and first name initial. For example, if your name is Katie Brodhead, the folder should be brodheadk. If you are a MacOS user, delete the _MacOS_ folder before zipping up your submission.
-
-3. Create a "zip"  file (using WinZip or similar program) to hold your project files.
-
-The name of your zip file should be named exactly like the single folder inside it but with the .zip extension. For instance:  brodheadk.zip.
-
-So, this is how your submission should be structured (if your name were Katie Brodhead) for this project:
-
-brodheadk.zip
-
-    brodheadk              // the folder holding all your files
-
-        file1.hpp          // with the actual names of your files,
-
-        file1.cpp          // of course ...
-
-        ...
-
-        UserManual.docx
-
-        UML.jpg            // please export .jpg from Dia
-        lastNames.txt
-
-last name data file is lastNames.txt in this repository.
